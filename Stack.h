@@ -43,8 +43,8 @@ Stack<S>::~Stack(){
 
 template <class S>
 void Stack<S>::push(S data){
-  //check if full before proceeding
-  if(isFull())     //If the top reaches to the maximum stack size
+  //checking if the stack is full and making it bigger if so
+  if(isFull())
   {
       S* newArray = new S[mSize * 2];
       memcpy(newArray, myArray, sizeof(S) * mSize);
@@ -63,7 +63,7 @@ template <class S>
 S Stack<S>::pop(){
   //check if empty before proceeding
   if(isEmpty()){
-    cout << "ERROR: stack is empty" << endl;
+    throw "ERROR: stack is empty";
     return '\0';
   }
   return myArray[top--];
@@ -73,7 +73,7 @@ template <class S>
 S Stack<S>::peek(){
   //check if empty before proceeding
   if(isEmpty()){
-    cout << "ERROR: stack is empty" << endl;
+    throw "ERROR: stack is empty";
     return '\0';
   }
   return myArray[top];
@@ -81,11 +81,11 @@ S Stack<S>::peek(){
 
 template <class S>
 void Stack<S>::printStack(){
-  //check if empty before proceeding
   for(int i = 0; i < sizeof(myArray); i++){
     if(myArray[i] != '\0')
       cout << myArray[i] << ", ";
   }
+  cout << endl;
 }
 
 
@@ -101,6 +101,5 @@ bool Stack<S>::isEmpty(){
 
 template <class S>
 int Stack<S>::getSize(){
-  // return top + 1;
-  return sizeof(myArray);
+  return top + 1;
 }
