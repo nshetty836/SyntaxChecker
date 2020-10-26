@@ -25,39 +25,51 @@ bool SyntaxChecker::checkForMatch(){
         switch(lineText[j]){
           case ')':
             check = delimStack.peek();
+            if(check == '\0'){
+              cout << "\nLine " << i << ": No opening bracket found for )\n" << endl;
+              return false;
+            }
             delimStack.pop();
             if(check == '{'){
-              cout << "Line " << i << ": expected } and found )" << endl;
+              cout << "\nLine " << i << ": expected } and found )\n" << endl;
               return false;
             }
             else if(check == '['){
-              cout << "Line " << i << ": expected [ and found )" << endl;
+              cout << "\nLine " << i << ": expected [ and found )\n" << endl;
               return false;
             }
             break;
 
           case '}':
             check = delimStack.peek();
+            if(check == '\0'){
+              cout << "\nLine " << i << ": No opening bracket found for }\n" << endl;
+              return false;
+            }
             delimStack.pop();
             if(check == '('){
-              cout << "Line " << i << ": expected ) and found }" << endl;
+              cout << "\nLine " << i << ": expected ) and found }\n" << endl;
               return false;
             }
             else if(check == '['){
-              cout << "Line " << i << ": expected [ and found }" << endl;
+              cout << "\nLine " << i << ": expected [ and found }\n" << endl;
               return false;
             }
             break;
 
           case ']':
             check = delimStack.peek();
+            if(check == '\0'){
+              cout << "\nLine " << i << ": No opening bracket found for ]\n" << endl;
+              return false;
+            }
             delimStack.pop();
             if(check == '{'){
-              cout << "Line " << i << ": expected } and found ]" << endl;
+              cout << "\nLine " << i << ": expected } and found ]\n" << endl;
               return false;
             }
             else if(check == '('){
-              cout << "Line " << i << ": expected ) and found ]" << endl;
+              cout << "\nLine " << i << ": expected ) and found ]\n" << endl;
               return false;
             }
             break;
@@ -68,17 +80,21 @@ bool SyntaxChecker::checkForMatch(){
   if(!delimStack.isEmpty()){
     switch(delimStack.peek()){
       case '(':
-        cout << "Reached end of file: missing )" << endl;
+        cout << "\nReached end of file: missing )\n" << endl;
         break;
       case '{':
-        cout << "Reached end of file: missing }" << endl;
+        cout << "\nReached end of file: missing }\n" << endl;
         break;
       case '[':
-        cout << "Reached end of file: missing ]" << endl;
+        cout << "\nReached end of file: missing ]\n" << endl;
         break;
     }
     return false;
   }
   else
     return true;
+}
+
+bool SyntaxChecker::checkFile(){
+  return fileReader->checkFile();
 }
