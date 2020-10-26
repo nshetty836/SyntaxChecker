@@ -62,18 +62,3 @@ int FileProcessor::getNumOfLines(){
   fileIn.close();
   return numOfLines;
 }
-//writing given string to file
-void FileProcessor::writeFile(string outFileName, string output){
-    ofstream fout;
-    // override whatever content is in the file
-    fout.open(outFileName, ios_base::app);
-    fout << output << endl;
-    fout.close();
-}
-
-//clear file
-void FileProcessor::clearFile(string outFileName){
-  ofstream fout;
-  fout.open(outFileName);
-  fout.close();
-}

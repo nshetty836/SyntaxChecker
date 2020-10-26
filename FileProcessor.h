@@ -13,8 +13,7 @@ public:
   string readLine(int num);
   int getLineNum();
   int getNumOfLines();
-  void writeFile(string outFileName, string output);
-  void clearFile(string outFileName);
+  
   ifstream fileIn;
 
   int numOfLines;
