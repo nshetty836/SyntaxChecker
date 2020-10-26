@@ -61,22 +61,30 @@ void Stack<S>::push(S data){
 
 template <class S>
 S Stack<S>::pop(){
-  //check if empty before proceeding
-  if(isEmpty()){
-    throw "ERROR: stack is empty";
+  try{
+    //check if empty before proceeding
+    if(isEmpty()){
+      throw "empty"s;
+    }
+    return myArray[top--];
+  }
+  catch(string e){
     return '\0';
   }
-  return myArray[top--];
 }
 
 template <class S>
 S Stack<S>::peek(){
-  //check if empty before proceeding
-  if(isEmpty()){
-    throw "ERROR: stack is empty";
+  try{
+    //check if empty before proceeding
+    if(isEmpty()){
+      throw "empty"s;
+    }
+    return myArray[top];
+  }
+  catch(string e){
     return '\0';
   }
-  return myArray[top];
 }
 
 template <class S>
