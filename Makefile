@@ -1,6 +1,6 @@
 # A simple Makefile for CPSC 350
 # Assumes the following directory hierarchy:
-# Assignment X
+# Assignment 3
 # 	src
 #       include
 
