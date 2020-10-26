@@ -35,6 +35,7 @@ string FileProcessor::readFile(){
   return fileText;
 }
 
+//returns the line in the file at the specified line num
 string FileProcessor::readLine(int num){
   fileIn.open(fileName);
   string line;
@@ -48,10 +49,7 @@ string FileProcessor::readLine(int num){
   return line;
 }
 
-int FileProcessor::getLineNum(){
-  return lineNum;
-}
-
+//returns how many lines are in the file
 int FileProcessor::getNumOfLines(){
   fileIn.open(fileName);
   string line;

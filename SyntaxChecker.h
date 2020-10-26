@@ -3,9 +3,9 @@
 
 class SyntaxChecker{
   public:
-    SyntaxChecker();
-    SyntaxChecker(string fileName);
-    ~SyntaxChecker();
+    SyntaxChecker(); // default constructor
+    SyntaxChecker(string fileName); // overloaded constructor taking in file name
+    ~SyntaxChecker(); // destructor
     bool checkForMatch();
     bool checkFile();
 
